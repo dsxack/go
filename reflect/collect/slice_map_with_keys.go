@@ -2,6 +2,8 @@ package collect
 
 import "reflect"
 
+// The SliceMapWithKeys func iterates through the slice and passes each key and value to the given mapFunc.
+// The mapFunc should return a single key / value pair
 func SliceMapWithKeys(value interface{}, mapFunc interface{}) interface{} {
 	refFunc := reflect.ValueOf(mapFunc)
 	refSlice := reflect.ValueOf(value)

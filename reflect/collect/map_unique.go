@@ -2,6 +2,7 @@ package collect
 
 import "reflect"
 
+// The MapUnique method returns all of the unique items in the map as new slice
 func MapUnique(value interface{}) interface{} {
 	refEmptyStruct := reflect.ValueOf(struct{}{})
 	refMap := reflect.ValueOf(value)

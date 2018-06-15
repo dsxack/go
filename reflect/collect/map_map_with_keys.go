@@ -2,6 +2,8 @@ package collect
 
 import "reflect"
 
+// The MapMapWithKeys func iterates through the map and passes each key and value to the given mapFunc.
+// The mapFunc should return a single key / value pair
 func MapMapWithKeys(value interface{}, mapFunc interface{}) interface{} {
 	refFunc := reflect.ValueOf(mapFunc)
 	refMap := reflect.ValueOf(value)

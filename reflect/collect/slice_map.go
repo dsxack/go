@@ -2,6 +2,8 @@ package collect
 
 import "reflect"
 
+// The SliceMap func iterates through the slice and passes each value to the given mapFunc.
+// The mapFunc is free to modify the item and return it, thus forming a new slice of modified items
 func SliceMap(value interface{}, mapFunc interface{}) interface{} {
 	refFunc := reflect.ValueOf(mapFunc)
 	refSlice := reflect.ValueOf(value)

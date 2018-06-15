@@ -2,6 +2,7 @@ package collect
 
 import "reflect"
 
+// The SliceUnique method returns all of the unique items in the slice as new slice
 func SliceUnique(value interface{}) interface{} {
 	refEmptyStruct := reflect.ValueOf(struct{}{})
 	refSlice := reflect.ValueOf(value)
