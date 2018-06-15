@@ -2,7 +2,7 @@ package collect
 
 import "reflect"
 
-// The MapKeys func returns all of the map keys as slice
+// MapKeys func returns all of the map keys as slice
 func MapKeys(value interface{}) interface{} {
 	refMap := reflect.ValueOf(value)
 	resSlice := reflect.MakeSlice(

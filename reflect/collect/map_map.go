@@ -2,7 +2,7 @@ package collect
 
 import "reflect"
 
-// The MapMap func iterates through the map and passes each value to the given mapFunc.
+// MapMap func iterates through the map and passes each value to the given mapFunc.
 // The mapFunc is free to modify the item and return it, thus forming a new slice of modified items
 func MapMap(value interface{}, mapFunc interface{}) interface{} {
 	refFunc := reflect.ValueOf(mapFunc)
