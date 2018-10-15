@@ -14,5 +14,5 @@ func TestSliceMap(t *testing.T) {
 		},
 	).([]string)
 
-	assert.ElementsMatch(t, res, []string{"1", "4", "9"})
+	assert.ElementsMatch(t, []string{"1", "4", "9"}, res)
 }
