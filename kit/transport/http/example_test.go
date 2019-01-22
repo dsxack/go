@@ -17,6 +17,11 @@ func makeSomeEndpoint() endpoint.Endpoint {
 	}
 }
 
+var (
+	request        *http.Request
+	responseWriter http.ResponseWriter
+)
+
 func ExampleMakeJSONRequestDecoder() {
 	kithttp.NewServer(
 		makeSomeEndpoint(),
@@ -35,4 +40,7 @@ func ExampleRecoveringMiddleware() {
 		)
 		handler = RecoveringMiddleware(handler, kithttp.DefaultErrorEncoder)
 	}
+
+	// do something with handler
+	handler.ServeHTTP(responseWriter, request)
 }
