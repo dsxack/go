@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"github.com/go-kit/kit/endpoint"
 	kithttp "github.com/go-kit/kit/transport/http"
 	"net/http"
@@ -10,9 +11,11 @@ type (
 	someRequest struct{}
 )
 
-var (
-	makeSomeEndpoint = func() endpoint.Endpoint {}
-)
+func makeSomeEndpoint() endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+		return nil, nil
+	}
+}
 
 func ExampleMakeJSONRequestDecoder() {
 	kithttp.NewServer(
