@@ -1,2 +1,2 @@
-// Package reflect/collect provide functions for manipulating collections via reflect
+// Package collect provide functions for manipulating collections via reflect
 package collect

@@ -1,2 +1,2 @@
-// Package kit/transport/http provide go-kit http transport functions
+// Package http provide go-kit http transport functions
 package http
