@@ -162,12 +162,6 @@ func TestMakeJSONRequestDecoder(t *testing.T) {
 
 	req, err := decoder(
 		context.Background(),
-		httptest.NewRequest(http.MethodPost, "/", nil),
-	)
-	assert.NotNil(t, err)
-
-	req, err = decoder(
-		context.Background(),
 		httptest.NewRequest(http.MethodPost, "/", strings.NewReader(`{"message":"test request message"}`)),
 	)
 	assert.Nil(t, err)
@@ -178,4 +172,16 @@ func TestMakeJSONRequestDecoder(t *testing.T) {
 	}
 
 	assert.Equal(t, testReq.Message, "test request message")
+}
+
+func TestMakeJSONRequestDecoderError(t *testing.T) {
+	decoder := MakeJSONRequestDecoder(func() interface{} {
+		return &testRequest{}
+	})
+
+	_, err := decoder(
+		context.Background(),
+		httptest.NewRequest(http.MethodPost, "/", nil),
+	)
+	assert.NotNil(t, err)
 }
