@@ -1,4 +1,4 @@
-module github.com/DsXack/go
+module github.com/dsxack/go
 
 require (
 	github.com/davecgh/go-spew v1.1.0 // indirect
