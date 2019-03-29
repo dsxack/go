@@ -5,8 +5,8 @@ go:
   - tip
 
 install:
-  - go get -u github.com/dave/courtney
-  - go get -t -v ./...
+  - GO111MODULE=on go get -u github.com/dave/courtney
+  - GO111MODULE=on go get -t -v ./...
 
 script:
   - courtney -e
