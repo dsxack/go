@@ -6,7 +6,7 @@ go:
 
 install:
   - go get -u github.com/dave/courtney
-  - GO111MODULE=on go mod download
+  - go get -t -v ./...
 
 script:
   - courtney -e
