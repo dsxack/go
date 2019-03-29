@@ -1,4 +1,4 @@
-package logrus_test
+package formatter_test
 
 import (
 	"bytes"

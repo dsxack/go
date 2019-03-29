@@ -1,4 +1,4 @@
-package logrus
+package formatter
 
 import (
 	"github.com/sirupsen/logrus"
