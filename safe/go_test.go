@@ -1,9 +1,14 @@
 package safe
 
-import "testing"
+import (
+	"testing"
+	"time"
+)
 
 func TestGo(t *testing.T) {
 	Go(func() {
 		panic("error")
 	})
+
+	time.Sleep(time.Second)
 }
