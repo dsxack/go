@@ -4,12 +4,11 @@ go:
   - 1.x
   - tip
 
-install:
-  - go get -u github.com/dave/courtney
+before_install:
   - go get -t -v ./...
 
 script:
-  - courtney -e
+  - go test -race -coverprofile=coverage.txt -covermode=atomic ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
