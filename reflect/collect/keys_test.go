@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestMapKeys(t *testing.T) {
-	res := MapKeys(map[string]int{
+func TestKeys(t *testing.T) {
+	res := Keys(map[string]int{
 		"one": 1,
 		"two": 2,
 	}).([]string)
