@@ -13,9 +13,11 @@ func TestCompose(t *testing.T) {
 		strconv.Itoa,
 		math.Abs,
 		FnReduce(0, func(acc, _, value int) int { return acc - value }),
+		Concat,
+		FnMapValues(func(v int) []int { return []int{v} }),
 		Keys,
 		FnMapWithKeys(func(k, v int) (int, int) { return v, k }),
-		FnMapValues(func(k, v int) int { return v * 2 }),
+		FnMapValues(func(v int) int { return v * 2 }),
 		Unique,
 		func(values ...int) []int { return values },
 	)

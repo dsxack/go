@@ -27,14 +27,15 @@ func FnMapValues(mapFunc Fn) func(Collection) Collection {
 // mapMapValues func iterates through the map and passes each value to the given mapFunc.
 // The mapFunc is free to modify the item and return it, thus forming a new slice of modified items
 func mapMapValues(refMap, refFunc reflect.Value) Map {
+	refFuncType := refFunc.Type()
 	resMap := reflect.MakeMap(
 		reflect.MapOf(
 			refMap.Type().Key(),
-			refFunc.Type().Out(0),
+			refFuncType.Out(0),
 		),
 	)
 	for _, k := range refMap.MapKeys() {
-		v := refFunc.Call([]reflect.Value{k, refMap.MapIndex(k)})[0]
+		v := fnKVCall(refFunc, refFuncType, k, refMap.MapIndex(k))[0]
 		resMap.SetMapIndex(k, v)
 	}
 	return resMap.Interface()
@@ -43,15 +44,16 @@ func mapMapValues(refMap, refFunc reflect.Value) Map {
 // sliceMapValues func iterates through the slice and passes each value to the given mapFunc.
 // The mapFunc is free to modify the item and return it, thus forming a new slice of modified items
 func sliceMapValues(refSlice, refFunc reflect.Value) Slice {
+	refFuncType := refFunc.Type()
 	resSlice := reflect.MakeSlice(
 		reflect.SliceOf(
-			refFunc.Type().Out(0),
+			refFuncType.Out(0),
 		),
 		refSlice.Len(),
 		refSlice.Len(),
 	)
 	for i := 0; i < refSlice.Len(); i += 1 {
-		v := refFunc.Call([]reflect.Value{reflect.ValueOf(i), refSlice.Index(i)})[0]
+		v := fnKVCall(refFunc, refFuncType, reflect.ValueOf(i), refSlice.Index(i))[0]
 		resSlice.Index(i).Set(v)
 	}
 	return resSlice.Interface()

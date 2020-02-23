@@ -4,15 +4,14 @@ import (
 	"reflect"
 )
 
-func Compose(f1, f2 Fn, funcs ...Fn) func(...Some) Some {
+func Compose(fns ...Fn) func(...Some) Some {
 	return func(values ...Some) Some {
 		refValues := MapValues(values, func(_, v Some) reflect.Value {
 			return reflect.ValueOf(v)
 		}).([]reflect.Value)
 
-		funcs = append([]Fn{f1, f2}, funcs...)
-		for i := len(funcs) - 1; i >= 0; i-- {
-			f := funcs[i]
+		for i := len(fns) - 1; i >= 0; i-- {
+			f := fns[i]
 
 			refFunc := reflect.ValueOf(f)
 
