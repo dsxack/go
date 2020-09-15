@@ -1,4 +1,4 @@
-module github.com/dsxack/go
+module github.com/dsxack/go/v2
 
 require (
 	github.com/go-kit/kit v0.8.0
