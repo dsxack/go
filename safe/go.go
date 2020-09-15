@@ -1,13 +1,17 @@
 package safe
 
 import (
-	"github.com/sirupsen/logrus"
+	"log"
 	"runtime/debug"
 )
 
+var DefaultRecover = func(err interface{}) {
+	log.Printf("Error in Go routine: %s\nStack: %s\n", err, debug.Stack())
+}
+
 // Go starts a recoverable goroutine
 func Go(goroutine func()) {
-	GoWithRecover(goroutine, defaultRecoverGoroutine)
+	GoWithRecover(goroutine, DefaultRecover)
 }
 
 // GoWithRecover starts a recoverable goroutine using given customRecover() function
@@ -20,9 +24,4 @@ func GoWithRecover(goroutine func(), customRecover func(err interface{})) {
 		}()
 		goroutine()
 	}()
-}
-
-func defaultRecoverGoroutine(err interface{}) {
-	logrus.Errorf("Error in Go routine: %s", err)
-	logrus.Errorf("Stack: %s", debug.Stack())
 }
