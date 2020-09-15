@@ -2,7 +2,7 @@ package formatter_test
 
 import (
 	"bytes"
-	_logrus "github.com/dsxack/go/logrus/formatter"
+	_logrus "github.com/dsxack/go/v2/logrus/formatter"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"testing"
