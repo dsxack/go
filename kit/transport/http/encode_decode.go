@@ -10,8 +10,8 @@ import (
 	"reflect"
 )
 
-// MakeJSONRequestDecoder is the universal DecodeRequestFunc creator
-func MakeJSONRequestDecoder(requestFactory func() interface{}) kithttp.DecodeRequestFunc {
+// NewJSONRequestDecoder is the universal DecodeRequestFunc creator
+func NewJSONRequestDecoder(requestFactory func() interface{}) kithttp.DecodeRequestFunc {
 	return func(_ context.Context, r *http.Request) (interface{}, error) {
 		request := requestFactory()
 		if err := json.NewDecoder(r.Body).Decode(request); err != nil {

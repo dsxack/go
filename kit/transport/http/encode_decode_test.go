@@ -156,7 +156,7 @@ type testRequest struct {
 }
 
 func TestMakeJSONRequestDecoder(t *testing.T) {
-	decoder := MakeJSONRequestDecoder(func() interface{} {
+	decoder := NewJSONRequestDecoder(func() interface{} {
 		return &testRequest{}
 	})
 
@@ -175,7 +175,7 @@ func TestMakeJSONRequestDecoder(t *testing.T) {
 }
 
 func TestMakeJSONRequestDecoderError(t *testing.T) {
-	decoder := MakeJSONRequestDecoder(func() interface{} {
+	decoder := NewJSONRequestDecoder(func() interface{} {
 		return &testRequest{}
 	})
 

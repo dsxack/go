@@ -25,7 +25,7 @@ var (
 func ExampleMakeJSONRequestDecoder() {
 	kithttp.NewServer(
 		makeSomeEndpoint(),
-		MakeJSONRequestDecoder(func() interface{} { return &someRequest{} }),
+		NewJSONRequestDecoder(func() interface{} { return &someRequest{} }),
 		kithttp.EncodeJSONResponse,
 	)
 }
@@ -35,7 +35,7 @@ func ExampleRecoveringMiddleware() {
 	{
 		handler = kithttp.NewServer(
 			makeSomeEndpoint(),
-			MakeJSONRequestDecoder(func() interface{} { return &someRequest{} }),
+			NewJSONRequestDecoder(func() interface{} { return &someRequest{} }),
 			kithttp.EncodeJSONResponse,
 		)
 		handler = RecoveringMiddleware(handler, kithttp.DefaultErrorEncoder)
