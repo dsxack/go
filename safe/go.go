@@ -6,7 +6,7 @@ import (
 )
 
 var DefaultRecover = func(err interface{}) {
-	log.Printf("Error in Go routine: %s\nStack: %s\n", err, debug.Stack())
+	log.Printf("Error in goroutine: %s\nStack: %s\n", err, debug.Stack())
 }
 
 // Go starts a recoverable goroutine
