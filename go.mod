@@ -1,10 +1,3 @@
-module github.com/dsxack/go/v2
+module github.com/dsxack/go/v3
 
-go 1.13
-
-require (
-	github.com/go-kit/kit v0.10.0
-	github.com/sirupsen/logrus v1.8.1
-	github.com/spf13/viper v1.14.0
-	github.com/stretchr/testify v1.8.1
-)
+go 1.23
